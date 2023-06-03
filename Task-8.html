@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bootstrap Form Validation</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" />
+    <style>
+        .error {
+            color: red;
+        }
+        
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f2f2f2;
+        }
+        
+        .container {
+            max-width: 400px;
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            font-weight: bold;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 8px;
+        }
+        
+        .btn {
+            background-color: red;
+        }
+        
+        .btn-primary {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-5">
+        <form id="myForm">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" class="form-control border" id="name" required />
+                <div class="error">Name is required.</div>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" class="form-control border" id="email" required />
+                <div class="error">Email is required.</div>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" class="form-control border" id="password" required />
+                <div class="error">Password is required.</div>
+            </div>
+            <div class="form-group">
+                <label for="hobbies">Hobbies:</label>
+                <select class="form-control" id="hobbies" required>
+                        <option value="">Select a hobby</option>
+                        <option value="reading">Reading</option>
+                        <option value="gardening">Gardening</option>
+                        <option value="painting">Painting</option>
+                        <option value="cooking">Cooking</option>
+                    </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script>
+        (function() {
+            "use strict";
+            window.addEventListener(
+                "load",
+                function() {
+                    var forms =
+                        document.getElementsByClassName("needs-validation");
+                    var validation = Array.prototype.filter.call(
+                        forms,
+                        function(form) {
+                            form.addEventListener(
+                                "submit",
+                                function(event) {
+                                    if (form.checkValidity() === false) {
+                                        event.preventDefault();
+                                        event.stopPropagation();
+                                    }
+                                    form.classList.add("was-validated");
+                                },
+                                false
+                            );
+                        }
+                    );
+                },
+                false
+            );
+        })();
+    </script>
+</body>
+
+</html>
